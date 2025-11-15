@@ -3,7 +3,8 @@ const cors = require('cors');
 const { connectDB, disconnectDB } = require('./config/database');
 require('dotenv').config();
 
-const authRoutes = require('./routes/auth.routes');
+const authRoutes = require('./routes/auth.route');
+const productRoutes = require('./routes/product.route');
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/products', productRoutes);
 
 app.get('/v1/health', (req, res) => {
   res.status(200).json({ message: 'API running' });
