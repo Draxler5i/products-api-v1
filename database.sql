@@ -1,0 +1,26 @@
+CREATE TABLE users (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME2 DEFAULT SYSDATETIME() NOT NULL,
+    updated_at DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+);
+GO
+
+CREATE TABLE products (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(500) NULL,
+    price FLOAT NOT NULL,
+    active BIT NOT NULL DEFAULT 1,
+    created_by INT NOT NULL,
+    created_at DATETIME2 DEFAULT SYSDATETIME() NOT NULL,
+    updated_at DATETIME2 DEFAULT SYSDATETIME() NOT NULL,
+
+    CONSTRAINT FK_products_users 
+        FOREIGN KEY (created_by) 
+        REFERENCES users(id)
+        ON DELETE CASCADE
+);
+GO
