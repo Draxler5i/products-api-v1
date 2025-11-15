@@ -128,7 +128,7 @@ const getMyProducts = async (req, res) => {
   try {
     const products = await productService.getProductsByUser(req.user.userId);
     
-    res.json({
+    res.status(200).json({
       success: true,
       data: products,
       count: products.length
