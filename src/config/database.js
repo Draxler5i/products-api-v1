@@ -19,9 +19,9 @@ const connectDB = async () => {
 const disconnectDB = async () => {
   try {
     await prisma.$disconnect();
-    console.log('🔌 Desconectado de la base de datos');
+    console.log('Desconectado de la base de datos');
   } catch (error) {
-    console.error('❌ Error al desconectar:', error.message);
+    console.error('Error al desconectar:', error.message);
   }
 };
 
